@@ -8,6 +8,9 @@ function App() {
     <Container>
       <Button green>green</Button>
       <Button className="fs20">pink</Button>
+      <ButtonTypeTwo>ButtonTypeTwo</ButtonTypeTwo>
+      <Atag href="#">Atag</Atag>
+      <InputButton button value="inputBtn" />
     </Container>
     </>
   );
@@ -37,7 +40,27 @@ const Button = styled.button`
   &.fs20{
     font-size: 20px;
   }
-  
+`;
+
+//extend
+const ButtonTypeTwo = styled(Button)`
+  color: #fff;
+`;
+
+//extend && tag변경
+const Atag = styled(Button.withComponent("a"))`
+  color: #fff;
+  padding: 10px;
+`
+// input type button
+const InputButton = styled.input.attrs(props => ({
+  type: "button",
+}))`
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  outline: none;
+  border-width: 0;
 `;
 
 export default App;
