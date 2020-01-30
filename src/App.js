@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { createGlobalStyle, keyframes } from 'styled-components';
+import styled, { createGlobalStyle, keyframes, css } from 'styled-components';
 
 function App() {
   return (
@@ -12,6 +12,7 @@ function App() {
       <Atag href="#">Atag</Atag>
       <InputButton button value="inputBtn" />
       <Rotation></Rotation>
+      <Rotation red></Rotation>
     </Container>
     </>
   );
@@ -76,10 +77,18 @@ const rotate = keyframes`
 `;
 
 const Rotation = styled.div`
-  outline: 1px solid #000;
+  outline: 1px solid ${props => props.red ? "#ff6600" : "#000"};
   width: 100px;
   height: 10px;
-  animation: ${rotate} 2s linear infinite;
+  display: inline-block;
+
+  ${props => {
+    if (props.red) {
+      return css `animation: ${rotate} 2s linear infinite `;
+    }else {
+      return css `animation: ${rotate} 2s linear infinite reverse`;
+    }
+  }}
 `;
 
 export default App;
