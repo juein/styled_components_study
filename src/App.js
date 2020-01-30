@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled, { createGlobalStyle, keyframes, css } from 'styled-components';
 
 function App() {
+  // state 변수와, 해당 변수를 갱신할 수 있는 함수 두개를 선언한다.
+  const [duration, setDuration] = useState(5);
+
   return (
     <>
     <GlobalStyle />
@@ -13,6 +16,13 @@ function App() {
       <InputButton button value="inputBtn" />
       <Rotation></Rotation>
       <Rotation red></Rotation>
+    </Container>
+
+    <Container>
+      <p>duration state val : {duration}</p>
+      <button type="button" onClick = {() => setDuration(duration + 1)}>plus</button>
+      <button type="button" onClick = {() => setDuration(duration - 1)}>minus</button>
+      <AppointDuration duration={duration}></AppointDuration>
     </Container>
     </>
   );
@@ -89,6 +99,12 @@ const Rotation = styled.div`
       return css `animation: ${rotate} 2s linear infinite reverse`;
     }
   }}
+`;
+
+const AppointDuration = styled(Rotation)`
+  ${props => {
+    return css `animation-duration : ${props.duration}s;`; 
+  }};
 `;
 
 export default App;
