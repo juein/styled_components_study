@@ -28,9 +28,9 @@ function App() {
   );
 }
 
+// 기존 injectGlobal이 v4부터 createGlobalStyle 로 대체되었다.
 // styled components는 해당 컴포넌트에만 스타일이 적용된다.
 // injectGlobal 사용시 공통으로 적용될 스타일을 지정할 수 있다.
-// v4부터 injectGlobal이 createGlobalStyle 로 대체되었다.
 const GlobalStyle  = createGlobalStyle`
   body {
     margin: 0;
@@ -93,12 +93,12 @@ const Rotation = styled.div`
   display: inline-block;
 
   ${props => {
-    if (props.red) {
+    if(props.red){
       return css `animation: ${rotate} 2s linear infinite `;
     }else {
       return css `animation: ${rotate} 2s linear infinite reverse`;
     }
-  }}
+  }};
 `;
 
 const AppointDuration = styled(Rotation)`
